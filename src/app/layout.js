@@ -1,3 +1,4 @@
+// app/layout.js
 import "./globals.css";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -10,11 +11,6 @@ export const metadata = {
   },
   description:
     "Diseño y construcción de obra civil, remodelaciones, dirección de obra y ejecución integral con calidad y seguridad.",
-  icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png", // opcional para iOS
-  },
   keywords: [
     "construcción",
     "obra civil",
@@ -26,6 +22,11 @@ export const metadata = {
     "Villahermosa",
     "Tabasco",
   ],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     type: "website",
     url: "https://proyectosyconstrucciones.mx",
@@ -33,29 +34,34 @@ export const metadata = {
     description:
       "Soluciones profesionales en construcción: proyectos ejecutivos, obra civil, acabados, dirección y supervisión.",
     siteName: "Proyectos y Construcciones",
+    locale: "es_MX",
     images: [
       {
-        url: "/og-cover.jpg",
+        url: "https://proyectosyconstrucciones.mx/og-cover.jpg", // ⚠️ ruta absoluta, no relativa
         width: 1200,
         height: 630,
-        alt: "Proyectos y Construcciones",
+        alt: "Corporativo de Proyectos y Construcciones",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@proyectosyconstrucciones", // opcional
     title: "Corporativo de Proyectos y Construcciones",
     description:
       "Diseño y ejecución de proyectos de construcción con calidad, seguridad y tiempos controlados.",
-    images: ["/og-cover.jpg"],
+    images: ["https://proyectosyconstrucciones.mx/og-cover.jpg"], // ⚠️ también absoluta
   },
-  alternates: { canonical: "https://proyectosyconstrucciones.mx" },
+  alternates: {
+    canonical: "https://proyectosyconstrucciones.mx",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className="min-h-screen bg-white text-slate-800 antialiased">
+        {/* Datos estructurados JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

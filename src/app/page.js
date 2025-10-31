@@ -169,11 +169,11 @@ export default function HomePage() {
             <div className="flex animate-[scroll_30s_linear_infinite] gap-10 opacity-80 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               {[
                 "cemex-logo-color.png",
-                "holcim.svg",
+                "autocad-seeklogo.png",
                 "hilti-logo.svg",
+                "holcim.svg",
                 "Milwaukee-logo-1.png",
                 "Logo-es.avif",
-                "autocad-seeklogo.png",
                 "Sketchup_Pagina_web-11.png",
                 "dewalt-seeklogo.png",
               ].map((logo, i) => (
@@ -471,36 +471,125 @@ export default function HomePage() {
       </Section>
 
       {/* =========================
-          CTA FINAL — conversión
-      ========================== */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-amber-50 to-white" />
+    CTA FINAL — CPC
+    ========================= */}
+      <section id="cta-cpc" className="relative isolate overflow-hidden">
+        {/* Fondo elegante */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-amber-50 via-white to-white"
+        />
+        {/* Brillos suaves */}
+        <div
+          aria-hidden
+          className="absolute -top-20 -left-20 h-60 w-60 -z-10 rounded-full bg-amber-200/40 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="absolute -bottom-24 -right-24 h-72 w-72 -z-10 rounded-full bg-amber-300/30 blur-3xl"
+        />
+
         <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-amber-200 bg-white p-8 shadow-sm md:grid-cols-2">
+          <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-amber-200/70 bg-white/80 p-8 shadow-xl backdrop-blur-md md:grid-cols-2">
+            {/* Lado izquierdo: texto + acciones */}
             <div>
-              <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
-                ¿Listo para cotizar tu proyecto?
+              <span className="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-800">
+                <ShieldCheck className="h-4 w-4 text-amber-600" />
+                Presupuesto claro · Cumplimiento garantizado
+              </span>
+
+              <h3 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
+                ¿Listo para cotizar tu obra o proyecto?
               </h3>
-              <p className="mt-2 text-slate-600">
+              <p className="mt-2 text-slate-700">
                 Respuesta el mismo día. Te acompañamos desde el anteproyecto
-                hasta la entrega.
+                hasta la entrega, con control de calidad y tiempos.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+
+              {/* Bullets rápidos de valor */}
+              <ul className="mt-6 grid gap-2 text-slate-700">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
+                  Propuesta técnica + cronograma
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
+                  Supervisión y control de calidad
+                </li>
+                <li className="flex items-start gap-2">
+                  <Timer className="mt-0.5 h-5 w-5 text-amber-600" />
+                  Entregas programadas por etapa
+                </li>
+              </ul>
+
+              {/* Botones */}
+              <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   href="/contacto"
-                  className="inline-flex items-center gap-2 rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-slate-900 transition hover:bg-amber-400"
+                  className="group inline-flex items-center gap-2 rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-slate-900 shadow-md shadow-amber-200 transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
                 >
                   Solicitar cotización
+                  <ArrowRight className="h-5 w-5 transition group-hover:translate-x-0.5" />
                 </Link>
+
                 <a
-                  href="https://wa.me/529930000000"
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 px-6 py-3 font-semibold text-slate-900 transition hover:bg-slate-50"
+                  href={`https://wa.me/529933895245?text=${encodeURIComponent(
+                    "Hola CPC, me gustaría cotizar un proyecto. ¿Me pueden apoyar?"
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
                 >
                   WhatsApp
                 </a>
+
+                <a
+                  href="tel:+529933895245"
+                  className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 font-semibold text-slate-700 underline-offset-4 transition hover:underline"
+                >
+                  <PhoneCall className="h-5 w-5" />
+                  Llamar
+                </a>
               </div>
             </div>
-            <div className="relative h-56 w-full md:h-64"></div>
+
+            {/* Lado derecho: tarjeta de confianza */}
+            <div className="relative">
+              <div className="relative rounded-2xl border border-amber-100 bg-white p-6 shadow-md">
+                <dl className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <dt className="text-sm text-slate-500">
+                      Proyectos entregados
+                    </dt>
+                    <dd className="text-3xl font-bold text-slate-900">120+</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm text-slate-500">Entrega a tiempo</dt>
+                    <dd className="text-3xl font-bold text-slate-900">100%</dd>
+                  </div>
+                </dl>
+
+                <div className="mt-5 rounded-xl bg-amber-50 p-4 ring-1 ring-amber-100">
+                  <p className="flex items-start gap-2 text-sm text-slate-800">
+                    <ShieldCheck className="mt-0.5 h-5 w-5 text-amber-600" />
+                    <span>
+                      Garantía de instalación según contrato y documentación
+                      completa de cierre.
+                    </span>
+                  </p>
+                </div>
+
+                {/* Detalle decorativo */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-amber-300/30 blur-2xl"
+                />
+              </div>
+
+              <p className="mt-3 text-center text-sm text-slate-500">
+                Cotizaciones claras, sin letra chiquita.
+              </p>
+            </div>
           </div>
         </div>
       </section>
