@@ -11,9 +11,9 @@ export const metadata = {
   description:
     "Diseño y construcción de obra civil, remodelaciones, dirección de obra y ejecución integral con calidad y seguridad.",
   icons: {
-    icon: "/public/favicon.png",
-    shortcut: "/public/favicon.png",
-    apple: "/public/favicon.png", // opcional para iOS
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png", // opcional para iOS
   },
   keywords: [
     "construcción",

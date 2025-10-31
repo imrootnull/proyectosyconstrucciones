@@ -16,6 +16,15 @@ import {
   CheckCircle2,
   LineChart,
   ArrowRight,
+  Shield,
+  FileCheck2,
+  Leaf,
+  Warehouse,
+  Store,
+  Landmark,
+  Home,
+  Factory,
+  Truck,
 } from "lucide-react";
 
 /* =========================
@@ -30,7 +39,7 @@ const scaleIn = (delay = 0) => ({
   animate: { opacity: 1, scale: 1, transition: { duration: 0.6, delay } },
 });
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
       {/* =========================
@@ -43,19 +52,19 @@ export default function Home() {
           className="pointer-events-none absolute inset-0"
           style={{
             background: `
-      radial-gradient(900px 500px at 10% 0%, rgba(255,255,255,0.08), transparent 60%),
-      radial-gradient(700px 400px at 90% 30%, rgba(245,158,11,0.15), transparent 60%),
-      radial-gradient(700px 400px at 50% 100%, rgba(255,255,255,0.06), transparent 60%)
-    `,
+              radial-gradient(900px 500px at 10% 0%, rgba(255,255,255,0.08), transparent 60%),
+              radial-gradient(700px 400px at 90% 30%, rgba(245,158,11,0.15), transparent 60%),
+              radial-gradient(700px 400px at 50% 100%, rgba(255,255,255,0.06), transparent 60%)
+            `,
           }}
         />
-
         {/* Blob suave */}
         <motion.div
           className="absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-amber-500/20 blur-3xl"
           animate={{ y: [0, 25, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
+
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:grid-cols-2 md:py-28">
           <div>
             <motion.span
@@ -159,17 +168,18 @@ export default function Home() {
           <div className="mx-auto max-w-7xl overflow-hidden px-6 py-6">
             <div className="flex animate-[scroll_30s_linear_infinite] gap-10 opacity-80 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               {[
-                "logo-1.svg",
-                "logo-2.svg",
-                "logo-3.svg",
-                "logo-4.svg",
-                "logo-5.svg",
-                "logo-1.svg",
-                "logo-2.svg",
+                "cemex-logo-color.png",
+                "holcim.svg",
+                "hilti-logo.svg",
+                "Milwaukee-logo-1.png",
+                "Logo-es.avif",
+                "autocad-seeklogo.png",
+                "Sketchup_Pagina_web-11.png",
+                "dewalt-seeklogo.png",
               ].map((logo, i) => (
                 <div key={i} className="relative h-8 w-28 shrink-0">
                   <Image
-                    src={`/images/${logo}`}
+                    src={`/logos/${logo}`}
                     alt=""
                     fill
                     className="object-contain"
@@ -180,6 +190,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* =========================
+          DIFERENCIALES — por qué elegirnos
+      ========================== */}
+      <Section
+        id="diferenciales"
+        title="Por qué elegirnos"
+        subtitle="Experiencia comprobada, procesos robustos y cumplimiento en cada detalle."
+      >
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              icon: Shield,
+              title: "Seguridad primero",
+              desc: "Protocolos SST, EPP y análisis de riesgo en cada frente de obra.",
+            },
+            {
+              icon: FileCheck2,
+              title: "Documentación al día",
+              desc: "Bitácoras, estimaciones, reportes fotográficos y cierres auditables.",
+            },
+            {
+              icon: Leaf,
+              title: "Enfoque sustentable",
+              desc: "Buenas prácticas de manejo de residuos y eficiencia de materiales.",
+            },
+          ].map((f, i) => (
+            <motion.div
+              key={f.title}
+              {...fadeUp(0.05 * i)}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <f.icon className="h-8 w-8 text-amber-500" />
+              <h3 className="mt-3 text-lg font-semibold text-slate-900">
+                {f.title}
+              </h3>
+              <p className="mt-1 text-slate-600">{f.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
 
       {/* =========================
           SERVICIOS — cards pro
@@ -254,17 +305,17 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-3">
           {[
             {
-              img: "/images/project-1.jpg",
+              img: "/images/naveindustrial.jpg",
               title: "Nave industrial",
               scope: "Obra civil + supervisión",
             },
             {
-              img: "/images/project-2.jpg",
+              img: "/images/complejocorporativo.jpg",
               title: "Complejo corporativo",
               scope: "Proyecto ejecutivo + dirección",
             },
             {
-              img: "/images/project-3.jpg",
+              img: "/images/remodelacion.jpg",
               title: "Remodelación comercial",
               scope: "Llave en mano",
             },
@@ -300,66 +351,122 @@ export default function Home() {
       </Section>
 
       {/* =========================
-          PROCESO — línea clara
+          COBERTURA Y SECTORES
       ========================== */}
       <Section
-        id="proceso"
-        title="Proceso claro y controlado"
-        subtitle="Transparencia y comunicación constante en cada etapa."
+        id="cobertura"
+        title="Cobertura y sectores"
+        subtitle="Atendemos proyectos en todo México con enfoque en seguridad, tiempos y calidad."
       >
         <div className="grid gap-6 md:grid-cols-4">
           {[
-            {
-              step: "1",
-              title: "Anteproyecto",
-              desc: "Levantamiento, alcance y propuesta técnica.",
-            },
-            {
-              step: "2",
-              title: "Proyecto ejecutivo",
-              desc: "Planos, especificaciones y presupuesto.",
-            },
-            {
-              step: "3",
-              title: "Ejecución",
-              desc: "Seguridad, coordinación y control de calidad.",
-            },
-            {
-              step: "4",
-              title: "Entrega",
-              desc: "Cierre técnico, garantías y documentación.",
-            },
+            { icon: Factory, label: "Industrial" },
+            { icon: Warehouse, label: "Logístico" },
+            { icon: Store, label: "Comercial" },
+            { icon: Home, label: "Residencial" },
           ].map((s, i) => (
             <motion.div
-              key={s.step}
+              key={s.label}
+              {...fadeUp(0.05 * i)}
+              className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5"
+            >
+              <s.icon className="h-6 w-6 text-amber-600" />
+              <span className="font-semibold text-slate-900">{s.label}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 text-sm text-slate-600">
+          <p className="flex items-center gap-2">
+            <Truck className="h-4 w-4 text-amber-600" />
+            Cobertura nacional — planificación logística y equipos certificados.
+          </p>
+        </div>
+      </Section>
+
+      {/* =========================
+          CERTIFICACIONES & CUMPLIMIENTO
+      ========================== */}
+      <Section
+        id="cumplimiento"
+        title="Certificaciones & Cumplimiento"
+        subtitle="Normativas y estándares que forman parte de nuestro proceso."
+      >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            {
+              icon: ShieldCheck,
+              title: "NOM / NMX",
+              desc: "Cumplimiento normativo y de seguridad aplicable.",
+            },
+            {
+              icon: FileCheck2,
+              title: "Bitácora digital",
+              desc: "Evidencia de avances y calidad por etapa.",
+            },
+            {
+              icon: BadgeCheck,
+              title: "Pruebas de materiales",
+              desc: "Registros de laboratorio y conformidad.",
+            },
+            {
+              icon: Leaf,
+              title: "Buenas prácticas",
+              desc: "Manejo de residuos y eficiencia de recursos.",
+            },
+          ].map((c, i) => (
+            <motion.div
+              key={c.title}
               {...fadeUp(0.05 * i)}
               className="rounded-2xl border border-slate-200 bg-white p-6"
             >
-              <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 font-bold text-amber-700">
-                {s.step}
-              </div>
-              <h4 className="mt-3 text-lg font-semibold text-slate-900">
-                {s.title}
-              </h4>
-              <p className="mt-1 text-slate-600">{s.desc}</p>
+              <c.icon className="h-8 w-8 text-amber-600" />
+              <h3 className="mt-3 text-lg font-semibold text-slate-900">
+                {c.title}
+              </h3>
+              <p className="mt-1 text-slate-600">{c.desc}</p>
             </motion.div>
           ))}
         </div>
       </Section>
 
       {/* =========================
-          TESTIMONIO — social proof
+          PREGUNTAS FRECUENTES (sin testimonios)
       ========================== */}
-      <Section id="testimonio" title="Lo que dicen nuestros clientes">
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 md:p-10">
-          <blockquote className="text-lg text-slate-700 md:text-xl">
-            “Su planeación y control en obra nos dieron tranquilidad total.
-            Entregaron en tiempo y con una calidad notable. Son un aliado
-            estratégico.”
-          </blockquote>
-          <div className="mt-4 text-sm text-slate-500">
-            — Dirección de Operaciones, Cliente Corporativo
-          </div>
+      <Section
+        id="faq"
+        title="Preguntas frecuentes"
+        subtitle="Resuelve dudas rápidas sobre tiempos, costos y alcance."
+      >
+        <div className="grid gap-4 md:grid-cols-2">
+          {[
+            {
+              q: "¿Cómo cotizan un proyecto?",
+              a: "Partimos de un levantamiento y alcance. Entregamos propuesta técnica, presupuesto y cronograma. Ajustamos con el cliente hasta cerrar el plan de obra.",
+            },
+            {
+              q: "¿Qué garantías ofrecen?",
+              a: "Garantía en instalación según contrato, cierres técnicos, entrega de manuales y documentación completa de obra.",
+            },
+            {
+              q: "¿En qué plazos trabajan?",
+              a: "Definimos un programa por etapas con hitos verificables y entregas parciales. Reportes semanales y control de cambios.",
+            },
+            {
+              q: "¿Dan servicio fuera de Tabasco?",
+              a: "Sí, coordinamos logística y personal certificado para proyectos en todo México.",
+            },
+          ].map((item, i) => (
+            <details
+              key={i}
+              className="group rounded-2xl border border-slate-200 bg-white p-5 open:shadow-sm"
+            >
+              <summary className="cursor-pointer list-none text-base font-semibold text-slate-900">
+                {item.q}
+              </summary>
+              <p className="mt-2 text-sm text-slate-600">{item.a}</p>
+            </details>
+          ))}
         </div>
       </Section>
 
@@ -393,29 +500,10 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <div className="relative h-56 w-full md:h-64">
-              <Image
-                src="/images/project-2.jpg"
-                alt="Calidad de ejecución"
-                fill
-                className="rounded-2xl object-cover"
-              />
-            </div>
+            <div className="relative h-56 w-full md:h-64"></div>
           </div>
         </div>
       </section>
-
-      {/* Animación keyframes (logos) */}
-      <style jsx global>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </main>
   );
 }
